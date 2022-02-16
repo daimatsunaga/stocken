@@ -22,4 +22,79 @@
 	
 	</insert>
 	
+	<select id="countLows" resultType="Integer">
+		SELECT count(*) FROM original;
+	</select>
+	
+	<select id="findAllOriginal" resultType="String">
+		select category_name
+		from original;
+	</select>
+	
+	<insert id="insertCategorySize3">
+	   INSERT INTO category(parent,name,name_all) 
+	   VALUES
+      <foreach collection="category" item="category" separator="," index="i">
+        <if test="i == 0">
+      	(null,#{category},null)
+      	</if>
+      	<if test="i == 1">
+      	(#{parent}+1,#{category},null)
+      	</if>
+      	<if test="i == 2">
+      	(#{parent}+2,#{category},#{nameAll})
+      	</if>
+      </foreach>
+	</insert>
+	
+	<insert id="insertCategorySize2">
+	   INSERT INTO category(parent,name,name_all) 
+	   VALUES
+      <foreach collection="category" item="category" separator="," index="i">
+        <if test="i == 0">
+      	(null,#{category},null)
+      	</if>
+      	<if test="i == 1">
+      	(#{parent}+1,#{category},#{nameAll})
+      	</if>
+      </foreach>
+	</insert>
+	
+	<insert id="insertCategorySize1">
+	   INSERT INTO category(parent,name,name_all) 
+	   VALUES(#{parent},#{category},#{nameAll})
+
+	</insert>
+	
+	<select id="findById" resultType="String">
+		SELECT category_name
+		FROM original
+		LIMIT 1 OFFSET #{id};
+	</select>
+	
+	<select id="getMaxId" resultType="Integer">
+		SELECT max(id)
+		FROM category;
+	</select>
+	
+<!-- 	<insert id="insertFirst">
+		INSERT INTO category(name) 
+		VALUES(#{name});
+	</insert>
+	
+	<insert id="insertSecond">
+		INSERT INTO category(parent, name) 
+		VALUES(#{parent}, #{name});
+	</insert>
+	
+	<insert id="insertThird">
+		INSERT INTO category(parent, name, name_all) 
+		VALUES      
+		<foreach collection="category" item="category" separator="," index="i">
+      	(
+      	#{category}
+      	)
+      </foreach> 
+	</insert> -->
+	
 </mapper>
