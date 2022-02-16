@@ -48,7 +48,7 @@ create unique index users_pki
 create table items (
   id serial not null, 
   name varchar(255), 
-  state int, 
+  condition_id int, 
   category int, 
   brand varchar(255), 
   price double, 
