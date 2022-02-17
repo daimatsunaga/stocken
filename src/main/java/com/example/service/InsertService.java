@@ -20,9 +20,7 @@ public class InsertService {
 	private InsertMapper insertMapper;
 	
 	public void insertCategoryTable() {
-		
-//		List<Category> categoryList1 = new ArrayList<>();
-		
+				
 		for(int i = 0; i <= insertMapper.countLows(); i++) {
 			String categoryAll = insertMapper.findById(i);
 			
@@ -51,10 +49,10 @@ public class InsertService {
 			if(categoryList.size() >= 4) {
 				String nameAll = categoryList.get(0) + "/" + categoryList.get(1) + "/" + categoryList.get(2);
 				Integer parent = insertMapper.getMaxId();
-				insertMapper.insertCategorySize3(parent, categoryList, nameAll);
+				insertMapper.insertCategorySize3(parent, categoryList, nameAll);	
 			}
 
 		}
 	}
-
+	
 }

@@ -15,3 +15,14 @@ price=@price,
 shipping=@shipping,
 description=@item_description;
 
+--category_group
+INSERT INTO category_group(big_category) VALUES('Beauty');
+INSERT INTO category_group(big_category) VALUES('Electronics');
+INSERT INTO category_group(big_category) VALUES('Handmade');
+INSERT INTO category_group(big_category) VALUES('Home');
+INSERT INTO category_group(big_category) VALUES('Kids');
+INSERT INTO category_group(big_category) VALUES('Men');
+INSERT INTO category_group(big_category) VALUES('Other');
+INSERT INTO category_group(big_category) VALUES('Sports & Outdoors');
+INSERT INTO category_group(big_category) VALUES('Vintage & Collectibles');
+INSERT INTO category_group(big_category) VALUES('Women');

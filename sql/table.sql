@@ -37,8 +37,7 @@ create table users (
   id serial not null, 
   name varchar(255), 
   password varchar(255), 
-  authority int, 
-  primary key (id)
+  authority int
 ) ;
 
 create unique index users_pki
@@ -53,8 +52,7 @@ create table items (
   brand varchar(255), 
   price double, 
   shipping int, 
-  description text, 
-  primary key (id)
+  description text
 ) ;
 
 create index items_brand_index
@@ -65,3 +63,9 @@ create index items_category_index
 
 create unique index items_pki
   on items(id);
+  
+  -- category_group
+create table category_group (
+   id serial not null, 
+   big_category varchar(255)
+) ;
