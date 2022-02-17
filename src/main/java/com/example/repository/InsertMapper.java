@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.example.domain.Category;
 import com.example.domain.Original;
 
 @Mapper
@@ -13,6 +14,8 @@ public interface InsertMapper {
 	public void insertOriginal(@Param("originalList")List<Original> originalList);
 	
 	public List<String> findAllOriginal();
+	
+	public void insertCategory(@Param("categoryList")List<Category> category);
 	
 	public void insertCategorySize1(@Param("parent")Integer parent, @Param("category")String category, @Param("nameAll") String nameAll);
 	public void insertCategorySize2(@Param("parent")Integer parent, @Param("category")List<String> category, @Param("nameAll") String nameAll);

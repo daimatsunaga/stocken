@@ -22,14 +22,18 @@
 	
 	</insert>
 	
-	<select id="countLows" resultType="Integer">
-		SELECT count(*) FROM original;
-	</select>
-	
 	<select id="findAllOriginal" resultType="String">
 		select category_name
 		from original;
 	</select>
+	
+	<insert id="insertCategory">
+	   INSERT INTO category(parent,name,name_all) 
+	   VALUES
+      <foreach collection="categoryList" item="ca" separator=",">
+      	(#{ca.parent},#{ca.name},#{ca.nameAll})
+      </foreach>
+	</insert>
 	
 	<insert id="insertCategorySize3">
 	   INSERT INTO category(parent,name,name_all) 
@@ -69,7 +73,7 @@
 	<select id="findById" resultType="String">
 		SELECT category_name
 		FROM original
-		LIMIT 1 OFFSET #{id};
+		WHERE id = #{id};
 	</select>
 	
 	<select id="getMaxId" resultType="Integer">
@@ -77,24 +81,8 @@
 		FROM category;
 	</select>
 	
-<!-- 	<insert id="insertFirst">
-		INSERT INTO category(name) 
-		VALUES(#{name});
-	</insert>
-	
-	<insert id="insertSecond">
-		INSERT INTO category(parent, name) 
-		VALUES(#{parent}, #{name});
-	</insert>
-	
-	<insert id="insertThird">
-		INSERT INTO category(parent, name, name_all) 
-		VALUES      
-		<foreach collection="category" item="category" separator="," index="i">
-      	(
-      	#{category}
-      	)
-      </foreach> 
-	</insert> -->
+	<select id="countLows" resultType="Integer">
+		SELECT count(*) FROM original;
+	</select>
 	
 </mapper>

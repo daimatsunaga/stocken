@@ -2,11 +2,14 @@ package com.example.service;
 
 
 
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import com.example.repository.InsertMapper;
 
@@ -17,13 +20,19 @@ public class InsertService {
 	private InsertMapper insertMapper;
 	
 	public void insertCategoryTable() {
+		
+//		List<Category> categoryList1 = new ArrayList<>();
+		
 		for(int i = 0; i <= insertMapper.countLows(); i++) {
 			String categoryAll = insertMapper.findById(i);
-			List<String> categoryList = Arrays.asList(insertMapper.findById(i).split("/"));
-			if(categoryList.get(0).isEmpty()) {
+			
+			if(Objects.isNull(categoryAll) || categoryAll.isEmpty()) {
 				continue;
 			}
 			
+			List<String> categoryList = Arrays.asList(insertMapper.findById(i).split("/"));
+			
+
 			if(categoryList.size() == 1) {
 				insertMapper.insertCategorySize1(null, categoryAll, categoryAll);
 			}
