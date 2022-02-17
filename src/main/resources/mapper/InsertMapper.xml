@@ -27,14 +27,6 @@
 		from original;
 	</select>
 	
-	<insert id="insertCategory">
-	   INSERT INTO category(parent,name,name_all) 
-	   VALUES
-      <foreach collection="categoryList" item="ca" separator=",">
-      	(#{ca.parent},#{ca.name},#{ca.nameAll})
-      </foreach>
-	</insert>
-	
 	<insert id="insertCategorySize3">
 	   INSERT INTO category(parent,name,name_all) 
 	   VALUES
