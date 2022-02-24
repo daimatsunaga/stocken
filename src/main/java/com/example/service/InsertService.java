@@ -28,7 +28,7 @@ public class InsertService {
 				continue;
 			}
 			
-			List<String> categoryList = Arrays.asList(insertMapper.findById(i).split("/"));
+			List<String> categoryList = Arrays.asList(categoryAll.split("/"));
 			
 
 			if(categoryList.size() == 1) {
